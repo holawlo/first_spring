@@ -14,7 +14,7 @@
     <button>Add</button>
 </form>
 </div>
-<ul th:each="historyElement : ${inputList}" class="list-group cal-hist-item">
+<ul th:each="historyElement : ${allElementsList}" class="list-group cal-hist-item">
     <li th:text="${historyElement}" th:classappend="${historyElementStat.odd}? 'odd'"
         class="collapse list-group-item">Element
     </li>
