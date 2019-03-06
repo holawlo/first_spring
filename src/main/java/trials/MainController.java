@@ -44,6 +44,4 @@ public class MainController {
         return "redirect:list";
     }
 
-    // TODO: add spring data dependency, application.properties,
-
 }

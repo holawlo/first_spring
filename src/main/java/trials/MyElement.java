@@ -18,4 +18,8 @@ public class MyElement {
 
     public MyElement() {
     }
+
+    public String getMessage() {
+        return message;
+    }
 }

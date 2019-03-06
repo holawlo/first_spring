@@ -15,7 +15,7 @@
 </form>
 </div>
 <ul th:each="historyElement : ${allElementsList}" class="list-group cal-hist-item">
-    <li th:text="${historyElement}" th:classappend="${historyElementStat.odd}? 'odd'"
+    <li th:text="${historyElement.message}" th:classappend="${historyElementStat.odd}? 'odd'"
         class="collapse list-group-item">Element
     </li>
 </ul>
