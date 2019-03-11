@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <meta charset="UTF-8">
+    <title>List - file</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<h3 th:text="'Type two words separated by space'" th:align="center"/>
+<div class="container">
+    <form action="/file" method="get">
+        <input type="text" name="fileElement" th:align="center">
+        <button>Add</button>
+    </form>
+</div>
+<ul th:each="historyElement : ${fileElementList}" class="list-group cal-hist-item">
+    <li th:text="${historyElement}" th:classappend="${historyElementStat.odd}? 'odd'"
+        class="collapse list-group-item">Element
+    </li>
+</ul>
+</body>
+</html>
