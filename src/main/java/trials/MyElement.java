@@ -3,10 +3,7 @@ package trials;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @Getter
@@ -16,6 +13,7 @@ public class MyElement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String message;
+    @Enumerated
     private FoodChoice foodChoice;
 
     public MyElement(String message, FoodChoice foodChoice) { //didn't see the one from lombok (?)
