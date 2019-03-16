@@ -6,14 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.io.*;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -35,16 +32,18 @@ public class MainController {
 
 
     @GetMapping(value = "/list")
-    public String listPage(Model model) { //TODO print list after changing between cards
+    public String listPage(Model model) {
         allElementsList = myElementRepository.findAll();
         model.addAttribute("allElementsList", allElementsList);
+        model.addAttribute("foods", FoodChoice.values());
+        //DTO? model.addAttribute("form", new UserRegistrationDTO());
         return "list";
     }
 
     @PostMapping(value = "/list")
-    public String listPagePost(@RequestParam String listElement, Model model) {
+    public String listPagePost(@RequestParam String listElement, FoodChoice foodChoice, Model model) {
+        myElementRepository.save(new MyElement(listElement, foodChoice));
 //        inputList.add(listElement);
-        myElementRepository.save(new MyElement(listElement));
 //        model.addAttribute("inputElement", listElement);
 //        model.addAttribute("inputList", inputList);
         return "redirect:list";
@@ -64,8 +63,8 @@ public class MainController {
 
     private List<String> readFile() {
         try {
-            return Files.readAllLines(Paths.get(this.getClass().getClassLoader().getResource("filespring.txt").toURI()));
-        } catch (IOException | URISyntaxException e) {
+            return Files.readAllLines(Paths.get(path));
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return new ArrayList<>();
@@ -73,20 +72,11 @@ public class MainController {
 
     private void saveToFile(String fileElement) {
         try {
-            Files.write(Paths.get(this.getClass().getClassLoader().getResource("filespring.txt").toURI()), Arrays.asList(fileElement), StandardOpenOption.APPEND);
-        } catch (IOException | URISyntaxException e) {
+            Files.write(Paths.get(path), fileElement.getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-//    @PostMapping(value = "/list")
-//    public String filePagePost(@RequestParam String fileElement, Model model) {
-//
-//
-//        // model.addAttribute("myFile", myFile);
-//
-//        return "file";
-//    }
 
 
 }
