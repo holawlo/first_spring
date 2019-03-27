@@ -1,11 +1,10 @@
 package trials;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.persistence.*;
+import javax.print.DocFlavor;
 
-@AllArgsConstructor
 @Getter
 @Entity
 public class MyElement {
@@ -13,7 +12,7 @@ public class MyElement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String message;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private FoodChoice foodChoice;
 
     public MyElement(String message, FoodChoice foodChoice) { //didn't see the one from lombok (?)
