@@ -13,9 +13,8 @@
     <input type="text" name="listElement" th:align="center">
         <select autofocus class="form-control" id="message" name="foods">
             <option th:value="''" th:text="Choose"></option>
-            <option th:each="foodChoice : ${foods}" th:value="${foodChoice.description}" th:text="${foodChoice}"></option>
+            <option th:each="foodChoice : ${foods}" th:value="${foodChoice}" th:text="${foodChoice}"></option>
         </select>
-
     <button>Add</button>
 </form>
 </div>

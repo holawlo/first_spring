@@ -36,13 +36,12 @@ public class MainController {
         allElementsList = myElementRepository.findAll();
         model.addAttribute("allElementsList", allElementsList);
         model.addAttribute("foods", FoodChoice.values());
-        //DTO? model.addAttribute("form", new UserRegistrationDTO());
         return "list";
     }
 
     @PostMapping(value = "/list")
-    public String listPagePost(@RequestParam String listElement, FoodChoice foodChoice, Model model) {
-        myElementRepository.save(new MyElement(listElement, foodChoice));
+    public String listPagePost(@RequestParam String listElement, FoodChoice foods, Model model) { //foods to name selecta w html
+        myElementRepository.save(new MyElement(listElement, foods));
 //        inputList.add(listElement);
 //        model.addAttribute("inputElement", listElement);
 //        model.addAttribute("inputList", inputList);
