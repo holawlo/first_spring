@@ -16,11 +16,11 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @Autowired
-    MyElementRepository myElementRepository;
+//    @Autowired
+//    MyElementRepository myElementRepository;
 
     List<String> inputList = new ArrayList<>();
-    List<MyElement> allElementsList = new ArrayList<>();
+//    List<MyElement> allElementsList = new ArrayList<>();
     String path = "/home/ola/Desktop/filespring.txt";
 
 
@@ -31,22 +31,22 @@ public class MainController {
     }
 
 
-    @GetMapping(value = "/list")
-    public String listPage(Model model) {
-        allElementsList = myElementRepository.findAll();
-        model.addAttribute("allElementsList", allElementsList);
-        model.addAttribute("foods", FoodChoice.values());
-        return "list";
-    }
+//    @GetMapping(value = "/list")
+//    public String listPage(Model model) {
+//        allElementsList = myElementRepository.findAll();
+//        model.addAttribute("allElementsList", allElementsList);
+//        model.addAttribute("foods", FoodChoice.values());
+//        return "list";
+//    }
 
-    @PostMapping(value = "/list")
-    public String listPagePost(@RequestParam String listElement, FoodChoice foods, Model model) { //foods to name selecta w html
-        myElementRepository.save(new MyElement(listElement, foods));
-//        inputList.add(listElement);
-//        model.addAttribute("inputElement", listElement);
-//        model.addAttribute("inputList", inputList);
-        return "redirect:list";
-    }
+//    @PostMapping(value = "/list")
+//    public String listPagePost(@RequestParam String listElement, FoodChoice foods, Model model) { //foods to name selecta w html
+//        myElementRepository.save(new MyElement(listElement, foods));
+////        inputList.add(listElement);
+////        model.addAttribute("inputElement", listElement);
+////        model.addAttribute("inputList", inputList);
+//        return "redirect:list";
+//    }
 
     @GetMapping(value = "/file")
     public String filePage(@RequestParam(required = false) String fileElement, Model model) {
