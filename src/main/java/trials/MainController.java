@@ -21,8 +21,8 @@ public class MainController {
 
     List<String> inputList = new ArrayList<>();
 //    List<MyElement> allElementsList = new ArrayList<>();
+    List<MyElementH2> allElementsListH2 = new ArrayList<>();
     String path = "/home/ola/Desktop/filespring.txt";
-
 
     @GetMapping("/trial")
     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
@@ -47,6 +47,23 @@ public class MainController {
 ////        model.addAttribute("inputList", inputList);
 //        return "redirect:list";
 //    }
+
+        @GetMapping(value = "/h2")
+    public String listPage(Model model) {
+        model.addAttribute("foodsH2", FoodChoice.values());
+//        allElementsList = // odczyt z h2
+        model.addAttribute("allElementsListH2", allElementsListH2);
+        return "h2";
+    }
+
+    @PostMapping(value = "/h2")
+    public String listPagePost(@RequestParam String listElementH2, FoodChoice foodsH2, Model model) { //foods to name selecta w html
+//        myElementRepository.save(new MyElement(listElementH2, foodsH2)); // zapis ale do h2
+//        inputList.add(listElement);
+//        model.addAttribute("inputElement", listElement);
+//        model.addAttribute("inputList", inputList);
+        return "redirect:h2";
+    }
 
     @GetMapping(value = "/file")
     public String filePage(@RequestParam(required = false) String fileElement, Model model) {
