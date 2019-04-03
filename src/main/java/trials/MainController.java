@@ -16,12 +16,11 @@ import java.util.List;
 @Controller
 public class MainController {
 
-//    @Autowired
-//    MyElementRepository myElementRepository;
+    @Autowired
+    MyElementRepository myElementRepository;
 
     List<String> inputList = new ArrayList<>();
-//    List<MyElement> allElementsList = new ArrayList<>();
-    List<MyElementH2> allElementsListH2 = new ArrayList<>();
+    List<MyElement> allElementsList = new ArrayList<>();
     String path = "/home/ola/Desktop/filespring.txt";
 
     @GetMapping("/trial")
@@ -31,38 +30,21 @@ public class MainController {
     }
 
 
-//    @GetMapping(value = "/list")
-//    public String listPage(Model model) {
-//        allElementsList = myElementRepository.findAll();
-//        model.addAttribute("allElementsList", allElementsList);
-//        model.addAttribute("foods", FoodChoice.values());
-//        return "list";
-//    }
-
-//    @PostMapping(value = "/list")
-//    public String listPagePost(@RequestParam String listElement, FoodChoice foods, Model model) { //foods to name selecta w html
-//        myElementRepository.save(new MyElement(listElement, foods));
-////        inputList.add(listElement);
-////        model.addAttribute("inputElement", listElement);
-////        model.addAttribute("inputList", inputList);
-//        return "redirect:list";
-//    }
-
-        @GetMapping(value = "/h2")
+    @GetMapping(value = "/list")
     public String listPage(Model model) {
-        model.addAttribute("foodsH2", FoodChoice.values());
-//        allElementsList = // odczyt z h2
-        model.addAttribute("allElementsListH2", allElementsListH2);
-        return "h2";
+        allElementsList = myElementRepository.findAll();
+        model.addAttribute("allElementsList", allElementsList);
+        model.addAttribute("foods", FoodChoice.values());
+        return "list";
     }
 
-    @PostMapping(value = "/h2")
-    public String listPagePost(@RequestParam String listElementH2, FoodChoice foodsH2, Model model) { //foods to name selecta w html
-//        myElementRepository.save(new MyElement(listElementH2, foodsH2)); // zapis ale do h2
+    @PostMapping(value = "/list")
+    public String listPagePost(@RequestParam String listElement, FoodChoice foods, Model model) { //foods to name selecta w html
+        myElementRepository.save(new MyElement(listElement, foods));
 //        inputList.add(listElement);
 //        model.addAttribute("inputElement", listElement);
 //        model.addAttribute("inputList", inputList);
-        return "redirect:h2";
+        return "redirect:list";
     }
 
     @GetMapping(value = "/file")

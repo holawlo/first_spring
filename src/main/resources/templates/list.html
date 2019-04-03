@@ -8,20 +8,20 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <h3 th:text="'Type what you want to eat'" th:align="center"/>
-<!--<div class="container">-->
-    <!--<form action="/list" method="post">-->
-    <!--<input type="text" name="listElement" th:align="center">-->
-        <!--<select autofocus class="form-control" id="message" name="foods">-->
-            <!--<option th:value="''" th:text="Choose"></option>-->
-            <!--<option th:each="foodChoice : ${foods}" th:value="${foodChoice}" th:text="${foodChoice}"></option>-->
-        <!--</select>-->
-    <!--<button>Add</button>-->
-<!--</form>-->
-<!--</div>-->
-<!--<ul th:each="historyElement : ${allElementsList}" class="list-group cal-hist-item">-->
-    <!--<li th:text="${historyElement.message}" th:classappend="${historyElementStat.odd}? 'odd'"-->
-        <!--class="collapse list-group-item">Element-->
-    <!--</li>-->
-<!--</ul>-->
+<div class="container">
+    <form action="/list" method="post">
+    <input type="text" name="listElement" th:align="center">
+        <select autofocus class="form-control" id="message" name="foods">
+            <option th:value="''" th:text="Choose"></option>
+            <option th:each="foodChoice : ${foods}" th:value="${foodChoice}" th:text="${foodChoice}"></option>
+        </select>
+    <button>Add</button>
+</form>
+</div>
+<ul th:each="historyElement : ${allElementsList}" class="list-group cal-hist-item">
+    <li th:text="${historyElement.message}" th:classappend="${historyElementStat.odd}? 'odd'"
+        class="collapse list-group-item">Element
+    </li>
+</ul>
 </body>
 </html>
