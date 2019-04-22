@@ -16,6 +16,14 @@
         <a href="/trial">TRIAL</a>
         <a href="/list">Adding to db</a>
         <a href="/file">Adding to file</a>
+        <a  th:if="${@userContextHolder.getUserLoggedIn()}"  href="/categories">Kategorie</a>
+        <a th:if="!${@userContextHolder.getUserLoggedIn()}" href="/register">Rejestracja</a>
+        <a th:if="${@userContextHolder.getUserLoggedIn()}" href="/products">Produkty</a>
+        <a th:if="!${@userContextHolder.getUserLoggedIn()}" href="/login">Login</a>
+        <a th:if="${@userContextHolder.getUserLoggedIn()}" href="/logout" style="float: right;color: white">Wyloguj</a>
+        <p style="color: white;float: right"
+           th:if="${@userContextHolder.getUserLoggedIn()}"
+           th:text="${@userContextHolder.getUserLoggedIn()}"></p>
     </div>
 
 </div>
